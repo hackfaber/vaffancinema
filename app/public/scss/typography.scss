@@ -1,0 +1,29 @@
+@import url(//fonts.googleapis.com/css?family=Raleway:100,200,300,400,500);
+
+$color-text: #262626;
+$helvetica: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+body {
+  color: $color-text;
+  -webkit-font-smoothing: antialiased;
+}
+
+input {
+}
+
+h1 {
+  font-size: 40px;
+  padding: 0 0 0px;
+  margin: 0px 0 32px;
+  font-weight: 200;
+  text-align: center;
+  letter-spacing: normal;
+  border-bottom: 1px solid lightgray;
+}
+
+.subheading {
+  padding: 0;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 200;
+}

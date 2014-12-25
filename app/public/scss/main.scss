@@ -1,0 +1,131 @@
+@import 'typography';
+
+$color-brand: #AC0A28;
+$footer-height: 60px;
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+ul.results {
+  list-style-type: none;
+  -webkit-padding-start: 0px;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+input[type=text].search {
+  font-size: 18px;
+  width: 100%;
+  
+  border: none;
+  border-radius: 0px;
+  border-bottom: 1px solid $color-brand;
+
+  font-weight: 200;
+  padding: 0px;
+  text-transform: uppercase;
+}
+
+input[type=text].search:focus {
+  border: none;
+  border-bottom: 1px solid #AC0A28;
+}
+
+.item {
+  margin-top: 0px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid lightgray;
+
+}
+
+.item:hover {
+  border-color: $color-brand;
+}
+
+.cinema {
+  font-weight: 300;
+  letter-spacing: 1px;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.location {
+  font-size: 9px;
+  display: block;
+  font-weight: 200;
+  text-transform: uppercase;
+  margin-bottom: 7px;
+  margin-top: -5px;
+}
+
+.film {
+  font-weight: 600;
+  text-transform: uppercase;
+  padding-bottom: 4px;
+  font-size: 13px;
+}
+
+/* Larger than phablet */
+@media (min-width: 550px) {
+  .location {
+    font-size: 9px;
+    display: block;
+    font-weight: 200;
+    text-transform: uppercase;
+    text-align: right;
+    margin-top: 3px;
+  }
+
+  .film {
+    padding-top: 6px;
+  }
+}
+
+.time {
+  color: $color-brand;
+  padding-right: 16px;
+  font-weight: 200;
+  font-family: $helvetica;
+  font-size: 17px;
+}
+
+// footer stuff
+
+div.container.page-wrap {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -1 * $footer-height; 
+}
+div.container.page-wrap.page-wrap:after {
+  content: "";
+  display: block;
+}
+footer, div.container.page-wrap:after {
+  height: $footer-height; 
+}
+
+footer {
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+  color: lightgray;
+}
+
+footer:hover {
+  color: $color-text
+}
+
+footer .row.declina {
+  padding-top: 8px;
+  border-top: 1px solid lightgray;
+}
+
+.madeby {
+  padding-top: 6px;
+}
