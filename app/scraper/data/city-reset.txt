@@ -1,0 +1,440 @@
+{ sign: 'ag',
+  name: 'agrigento',
+  dashed_name: 'agrigento',
+  _id: ObjectId('549d2be0b0552a175f160206') }
+{ sign: 'al',
+  name: 'alessandria',
+  dashed_name: 'alessandria',
+  _id: ObjectId('549d2be0b0552a175f160207') }
+{ sign: 'an',
+  name: 'ancona',
+  dashed_name: 'ancona',
+  _id: ObjectId('549d2be0b0552a175f160208') }
+{ sign: 'ao',
+  name: 'aosta',
+  dashed_name: 'aosta',
+  _id: ObjectId('549d2be0b0552a175f160209') }
+{ sign: 'ar',
+  name: 'arezzo',
+  dashed_name: 'arezzo',
+  _id: ObjectId('549d2be0b0552a175f16020a') }
+{ sign: 'ap',
+  name: 'ascoli piceno',
+  dashed_name: 'ascoli-piceno',
+  _id: ObjectId('549d2be0b0552a175f16020b') }
+{ sign: 'at',
+  name: 'asti',
+  dashed_name: 'asti',
+  _id: ObjectId('549d2be0b0552a175f16020c') }
+{ sign: 'av',
+  name: 'avellino',
+  dashed_name: 'avellino',
+  _id: ObjectId('549d2be0b0552a175f16020d') }
+{ sign: 'ba',
+  name: 'bari',
+  dashed_name: 'bari',
+  _id: ObjectId('549d2be0b0552a175f16020e') }
+{ sign: 'bt',
+  name: 'barletta-andria-trani',
+  dashed_name: 'barletta-andria-trani',
+  _id: ObjectId('549d2be0b0552a175f16020f') }
+{ sign: 'bl',
+  name: 'belluno',
+  dashed_name: 'belluno',
+  _id: ObjectId('549d2be0b0552a175f160210') }
+{ sign: 'bn',
+  name: 'benevento',
+  dashed_name: 'benevento',
+  _id: ObjectId('549d2be0b0552a175f160211') }
+{ sign: 'bg',
+  name: 'bergamo',
+  dashed_name: 'bergamo',
+  _id: ObjectId('549d2be0b0552a175f160212') }
+{ sign: 'bi',
+  name: 'biella',
+  dashed_name: 'biella',
+  _id: ObjectId('549d2be0b0552a175f160213') }
+{ sign: 'bo',
+  name: 'bologna',
+  dashed_name: 'bologna',
+  _id: ObjectId('549d2be0b0552a175f160214') }
+{ sign: 'bz',
+  name: 'bolzano',
+  dashed_name: 'bolzano',
+  _id: ObjectId('549d2be0b0552a175f160215') }
+{ sign: 'bs',
+  name: 'brescia',
+  dashed_name: 'brescia',
+  _id: ObjectId('549d2be0b0552a175f160216') }
+{ sign: 'br',
+  name: 'brindisi',
+  dashed_name: 'brindisi',
+  _id: ObjectId('549d2be0b0552a175f160217') }
+{ sign: 'ca',
+  name: 'cagliari',
+  dashed_name: 'cagliari',
+  _id: ObjectId('549d2be0b0552a175f160218') }
+{ sign: 'cl',
+  name: 'caltanissetta',
+  dashed_name: 'caltanissetta',
+  _id: ObjectId('549d2be0b0552a175f160219') }
+{ sign: 'cb',
+  name: 'campobasso',
+  dashed_name: 'campobasso',
+  _id: ObjectId('549d2be0b0552a175f16021a') }
+{ sign: 'ci',
+  name: 'carbonia-iglesias',
+  dashed_name: 'carbonia-iglesias',
+  _id: ObjectId('549d2be0b0552a175f16021b') }
+{ sign: 'ce',
+  name: 'caserta',
+  dashed_name: 'caserta',
+  _id: ObjectId('549d2be0b0552a175f16021c') }
+{ sign: 'ct',
+  name: 'catania',
+  dashed_name: 'catania',
+  _id: ObjectId('549d2be0b0552a175f16021d') }
+{ sign: 'cz',
+  name: 'catanzaro',
+  dashed_name: 'catanzaro',
+  _id: ObjectId('549d2be0b0552a175f16021e') }
+{ sign: 'ch',
+  name: 'chieti',
+  dashed_name: 'chieti',
+  _id: ObjectId('549d2be0b0552a175f16021f') }
+{ sign: 'co',
+  name: 'como',
+  dashed_name: 'como',
+  _id: ObjectId('549d2be0b0552a175f160220') }
+{ sign: 'cs',
+  name: 'cosenza',
+  dashed_name: 'cosenza',
+  _id: ObjectId('549d2be0b0552a175f160221') }
+{ sign: 'cr',
+  name: 'cremona',
+  dashed_name: 'cremona',
+  _id: ObjectId('549d2be0b0552a175f160222') }
+{ sign: 'kr',
+  name: 'crotone',
+  dashed_name: 'crotone',
+  _id: ObjectId('549d2be0b0552a175f160223') }
+{ sign: 'cn',
+  name: 'cuneo',
+  dashed_name: 'cuneo',
+  _id: ObjectId('549d2be0b0552a175f160224') }
+{ sign: 'en',
+  name: 'enna',
+  dashed_name: 'enna',
+  _id: ObjectId('549d2be0b0552a175f160225') }
+{ sign: 'fm',
+  name: 'fermo',
+  dashed_name: 'fermo',
+  _id: ObjectId('549d2be0b0552a175f160226') }
+{ sign: 'fe',
+  name: 'ferrara',
+  dashed_name: 'ferrara',
+  _id: ObjectId('549d2be0b0552a175f160227') }
+{ sign: 'fi',
+  name: 'firenze',
+  dashed_name: 'firenze',
+  _id: ObjectId('549d2be0b0552a175f160228') }
+{ sign: 'fg',
+  name: 'foggia',
+  dashed_name: 'foggia',
+  _id: ObjectId('549d2be0b0552a175f160229') }
+{ sign: 'fc',
+  name: 'forli\'-cesena',
+  dashed_name: 'forli\'-cesena',
+  _id: ObjectId('549d2be0b0552a175f16022a') }
+{ sign: 'fr',
+  name: 'frosinone',
+  dashed_name: 'frosinone',
+  _id: ObjectId('549d2be0b0552a175f16022b') }
+{ sign: 'ge',
+  name: 'genova',
+  dashed_name: 'genova',
+  _id: ObjectId('549d2be0b0552a175f16022c') }
+{ sign: 'go',
+  name: 'gorizia',
+  dashed_name: 'gorizia',
+  _id: ObjectId('549d2be0b0552a175f16022d') }
+{ sign: 'gr',
+  name: 'grosseto',
+  dashed_name: 'grosseto',
+  _id: ObjectId('549d2be0b0552a175f16022e') }
+{ sign: 'im',
+  name: 'imperia',
+  dashed_name: 'imperia',
+  _id: ObjectId('549d2be0b0552a175f16022f') }
+{ sign: 'is',
+  name: 'isernia',
+  dashed_name: 'isernia',
+  _id: ObjectId('549d2be0b0552a175f160230') }
+{ sign: 'aq',
+  name: 'l\'aquila',
+  dashed_name: 'l\'aquila',
+  _id: ObjectId('549d2be0b0552a175f160231') }
+{ sign: 'sp',
+  name: 'la spezia',
+  dashed_name: 'la-spezia',
+  _id: ObjectId('549d2be0b0552a175f160232') }
+{ sign: 'lt',
+  name: 'latina',
+  dashed_name: 'latina',
+  _id: ObjectId('549d2be0b0552a175f160233') }
+{ sign: 'le',
+  name: 'lecce',
+  dashed_name: 'lecce',
+  _id: ObjectId('549d2be0b0552a175f160234') }
+{ sign: 'lc',
+  name: 'lecco',
+  dashed_name: 'lecco',
+  _id: ObjectId('549d2be0b0552a175f160235') }
+{ sign: 'li',
+  name: 'livorno',
+  dashed_name: 'livorno',
+  _id: ObjectId('549d2be0b0552a175f160236') }
+{ sign: 'lo',
+  name: 'lodi',
+  dashed_name: 'lodi',
+  _id: ObjectId('549d2be0b0552a175f160237') }
+{ sign: 'lu',
+  name: 'lucca',
+  dashed_name: 'lucca',
+  _id: ObjectId('549d2be0b0552a175f160238') }
+{ sign: 'mc',
+  name: 'macerata',
+  dashed_name: 'macerata',
+  _id: ObjectId('549d2be0b0552a175f160239') }
+{ sign: 'mn',
+  name: 'mantova',
+  dashed_name: 'mantova',
+  _id: ObjectId('549d2be0b0552a175f16023a') }
+{ sign: 'ms',
+  name: 'massa-carrara',
+  dashed_name: 'massa-carrara',
+  _id: ObjectId('549d2be0b0552a175f16023b') }
+{ sign: 'mt',
+  name: 'matera',
+  dashed_name: 'matera',
+  _id: ObjectId('549d2be0b0552a175f16023c') }
+{ sign: 'md',
+  name: 'medio campidano',
+  dashed_name: 'medio-campidano',
+  _id: ObjectId('549d2be0b0552a175f16023d') }
+{ sign: 'me',
+  name: 'messina',
+  dashed_name: 'messina',
+  _id: ObjectId('549d2be0b0552a175f16023e') }
+{ sign: 'mi',
+  name: 'milano',
+  dashed_name: 'milano',
+  _id: ObjectId('549d2be0b0552a175f16023f') }
+{ sign: 'mo',
+  name: 'modena',
+  dashed_name: 'modena',
+  _id: ObjectId('549d2be0b0552a175f160240') }
+{ sign: 'mb',
+  name: 'monza e della brianza',
+  dashed_name: 'monza-e-della-brianza',
+  _id: ObjectId('549d2be0b0552a175f160241') }
+{ sign: 'na',
+  name: 'napoli',
+  dashed_name: 'napoli',
+  _id: ObjectId('549d2be0b0552a175f160242') }
+{ sign: 'no',
+  name: 'novara',
+  dashed_name: 'novara',
+  _id: ObjectId('549d2be0b0552a175f160243') }
+{ sign: 'nu',
+  name: 'nuoro',
+  dashed_name: 'nuoro',
+  _id: ObjectId('549d2be0b0552a175f160244') }
+{ sign: 'og',
+  name: 'ogliastra',
+  dashed_name: 'ogliastra',
+  _id: ObjectId('549d2be0b0552a175f160245') }
+{ sign: 'ot',
+  name: 'olbia-tempio',
+  dashed_name: 'olbia-tempio',
+  _id: ObjectId('549d2be0b0552a175f160246') }
+{ sign: 'or',
+  name: 'oristano',
+  dashed_name: 'oristano',
+  _id: ObjectId('549d2be0b0552a175f160247') }
+{ sign: 'pd',
+  name: 'padova',
+  dashed_name: 'padova',
+  _id: ObjectId('549d2be0b0552a175f160248') }
+{ sign: 'pa',
+  name: 'palermo',
+  dashed_name: 'palermo',
+  _id: ObjectId('549d2be0b0552a175f160249') }
+{ sign: 'pr',
+  name: 'parma',
+  dashed_name: 'parma',
+  _id: ObjectId('549d2be0b0552a175f16024a') }
+{ sign: 'pv',
+  name: 'pavia',
+  dashed_name: 'pavia',
+  _id: ObjectId('549d2be0b0552a175f16024b') }
+{ sign: 'pg',
+  name: 'perugia',
+  dashed_name: 'perugia',
+  _id: ObjectId('549d2be0b0552a175f16024c') }
+{ sign: 'pu',
+  name: 'pesaro e urbino',
+  dashed_name: 'pesaro-e-urbino',
+  _id: ObjectId('549d2be0b0552a175f16024d') }
+{ sign: 'pe',
+  name: 'pescara',
+  dashed_name: 'pescara',
+  _id: ObjectId('549d2be0b0552a175f16024e') }
+{ sign: 'pc',
+  name: 'piacenza',
+  dashed_name: 'piacenza',
+  _id: ObjectId('549d2be0b0552a175f16024f') }
+{ sign: 'pi',
+  name: 'pisa',
+  dashed_name: 'pisa',
+  _id: ObjectId('549d2be0b0552a175f160250') }
+{ sign: 'pt',
+  name: 'pistoia',
+  dashed_name: 'pistoia',
+  _id: ObjectId('549d2be0b0552a175f160251') }
+{ sign: 'pn',
+  name: 'pordenone',
+  dashed_name: 'pordenone',
+  _id: ObjectId('549d2be0b0552a175f160252') }
+{ sign: 'pz',
+  name: 'potenza',
+  dashed_name: 'potenza',
+  _id: ObjectId('549d2be0b0552a175f160253') }
+{ sign: 'po',
+  name: 'prato',
+  dashed_name: 'prato',
+  _id: ObjectId('549d2be0b0552a175f160254') }
+{ sign: 'rg',
+  name: 'ragusa',
+  dashed_name: 'ragusa',
+  _id: ObjectId('549d2be0b0552a175f160255') }
+{ sign: 'ra',
+  name: 'ravenna',
+  dashed_name: 'ravenna',
+  _id: ObjectId('549d2be0b0552a175f160256') }
+{ sign: 'rc',
+  name: 'reggio calabria',
+  dashed_name: 'reggio-calabria',
+  _id: ObjectId('549d2be0b0552a175f160257') }
+{ sign: 're',
+  name: 'reggio emilia',
+  dashed_name: 'reggio-emilia',
+  _id: ObjectId('549d2be0b0552a175f160258') }
+{ sign: 'ri',
+  name: 'rieti',
+  dashed_name: 'rieti',
+  _id: ObjectId('549d2be0b0552a175f160259') }
+{ sign: 'rn',
+  name: 'rimini',
+  dashed_name: 'rimini',
+  _id: ObjectId('549d2be0b0552a175f16025a') }
+{ sign: 'rm',
+  name: 'roma',
+  dashed_name: 'roma',
+  _id: ObjectId('549d2be0b0552a175f16025b') }
+{ sign: 'ro',
+  name: 'rovigo',
+  dashed_name: 'rovigo',
+  _id: ObjectId('549d2be0b0552a175f16025c') }
+{ sign: 'sa',
+  name: 'salerno',
+  dashed_name: 'salerno',
+  _id: ObjectId('549d2be0b0552a175f16025d') }
+{ sign: 'ss',
+  name: 'sassari',
+  dashed_name: 'sassari',
+  _id: ObjectId('549d2be0b0552a175f16025e') }
+{ sign: 'sv',
+  name: 'savona',
+  dashed_name: 'savona',
+  _id: ObjectId('549d2be0b0552a175f16025f') }
+{ sign: 'si',
+  name: 'siena',
+  dashed_name: 'siena',
+  _id: ObjectId('549d2be0b0552a175f160260') }
+{ sign: 'sr',
+  name: 'siracusa',
+  dashed_name: 'siracusa',
+  _id: ObjectId('549d2be0b0552a175f160261') }
+{ sign: 'so',
+  name: 'sondrio',
+  dashed_name: 'sondrio',
+  _id: ObjectId('549d2be0b0552a175f160262') }
+{ sign: 'ta',
+  name: 'taranto',
+  dashed_name: 'taranto',
+  _id: ObjectId('549d2be0b0552a175f160263') }
+{ sign: 'te',
+  name: 'teramo',
+  dashed_name: 'teramo',
+  _id: ObjectId('549d2be0b0552a175f160264') }
+{ sign: 'tr',
+  name: 'terni',
+  dashed_name: 'terni',
+  _id: ObjectId('549d2be0b0552a175f160265') }
+{ sign: 'to',
+  name: 'torino',
+  dashed_name: 'torino',
+  _id: ObjectId('549d2be0b0552a175f160266') }
+{ sign: 'tp',
+  name: 'trapani',
+  dashed_name: 'trapani',
+  _id: ObjectId('549d2be0b0552a175f160267') }
+{ sign: 'tn',
+  name: 'trento',
+  dashed_name: 'trento',
+  _id: ObjectId('549d2be0b0552a175f160268') }
+{ sign: 'tv',
+  name: 'treviso',
+  dashed_name: 'treviso',
+  _id: ObjectId('549d2be0b0552a175f160269') }
+{ sign: 'ts',
+  name: 'trieste',
+  dashed_name: 'trieste',
+  _id: ObjectId('549d2be0b0552a175f16026a') }
+{ sign: 'ud',
+  name: 'udine',
+  dashed_name: 'udine',
+  _id: ObjectId('549d2be0b0552a175f16026b') }
+{ sign: 'va',
+  name: 'varese',
+  dashed_name: 'varese',
+  _id: ObjectId('549d2be0b0552a175f16026c') }
+{ sign: 've',
+  name: 'venezia',
+  dashed_name: 'venezia',
+  _id: ObjectId('549d2be0b0552a175f16026d') }
+{ sign: 'vb',
+  name: 'verbano-cusio-ossola',
+  dashed_name: 'verbano-cusio-ossola',
+  _id: ObjectId('549d2be0b0552a175f16026e') }
+{ sign: 'vc',
+  name: 'vercelli',
+  dashed_name: 'vercelli',
+  _id: ObjectId('549d2be0b0552a175f16026f') }
+{ sign: 'vr',
+  name: 'verona',
+  dashed_name: 'verona',
+  _id: ObjectId('549d2be0b0552a175f160270') }
+{ sign: 'vv',
+  name: 'vibo valentia',
+  dashed_name: 'vibo-valentia',
+  _id: ObjectId('549d2be0b0552a175f160271') }
+{ sign: 'vi',
+  name: 'vicenza',
+  dashed_name: 'vicenza',
+  _id: ObjectId('549d2be0b0552a175f160272') }
+{ sign: 'vt',
+  name: 'viterbo',
+  dashed_name: 'viterbo',
+  _id: ObjectId('549d2be0b0552a175f160273') }

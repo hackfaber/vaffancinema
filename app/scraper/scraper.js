@@ -1,133 +1,113 @@
 'use strict';
 
-var html_file = './data/films.html';
-var jquery_file = './assets/jquery.min.js';
+/**
+ * How it works
+ *
+ * Once every three days it starts the loop:
+ * 1) it retrieve the <cities> collection from db and for each city:
+ *   a) check if <last_update> is older than three days and in that case:
+ *   b) retrieve corresponding html page and scrape it.
+ *   c) save result of scraping in <data> collection on db
+ *   d) update <last_update> in <city> item
+ *
+ * 2) if an error occurred during scraping (often correction ends to be resetted) 
+ *    it retry 10 times restarting scraping process
+ *   a) if preocess fials 10 times, save and error object on db
+ *
+ * 3) notify city update to server via api call
+ */
 
-var cities = require('./data/cities.js');
-var minstache = require('minstache');
-var template_url_citta = minstache.compile('http://trovacinema.repubblica.it/programmazione-cinema/citta/{{dashed_name}}/{{sign}}/film');
-var template_url_provincia = minstache.compile('http://trovacinema.repubblica.it/programmazione-cinema/provincia/{{name}}/{{sign}}/film');
-
+var DEBUG = process.env.NODE_ENV !== 'production';
+var CONCURRENCY = 4;
+var mongojs = require('mongojs');
+var db = mongojs('vaffancinema', ['cities', 'errors']);
+var scrape_city = require('./scrape-city.js');
 var async = require('async');
-var jsdom = require('jsdom');
-var fs = require('fs');
-var html = fs.readFileSync(html_file, 'utf-8');
-var jquery = fs.readFileSync(jquery_file, 'utf-8');
+var moment = require('moment');
 
-var redis = require("redis");
-var client = redis.createClient();
+var now = moment();
+var test = DEBUG ? now : now.subtract(3, 'days');
 
-var fs = require('fs');
-var data = [];
+var counter = 0;
+var decrement = function (done) {
+  return function (err) { 
+    if (!err) {
+      counter -= 1; 
+    };
 
-client.on("error", function (err) {
-  console.log("Error " + err);
-});
+    if (counter <= 0) {
+      setImmediate(done);
+    }
+  };
+};
 
-var redis_key_template = minstache.compile('CITY={{city}};TYPE={{type}};CINEMA={{cinema}};TITLE={{title}}');
+// scrape_city_callback
 
-var to_redis = function (result, done) {
-  // KEY: city=verona;title=interstellar;cinema=odeon;type=provincia
-  // VALUE ["18:00", "20:45", "23:00"]
+var scrape_city_callback = function (city, done) {
+  return function (err) {
+    if (err) {
+      // here is the place to check if a maximum retry has been reached
+      console.log(err);
+      q.push(city, decrement(done));
+      return;
+    }
 
-  // KEY: city=roma;title=avatar;cinema=maestoso;type=citta
-  // VALUE ["18:00", "20:45", "23:00"]
+    city.last_update = now.toDate();
+    db.cities.save(city, done); // saving correclty ended should be checked
+  };
+};
 
-  // use instead mapLimit(arr, limit, iterator, callback) 
-  var commands = [];
+// process_city
 
-  result.forEach(function (city) {
-    city.forEach(function (film) {
-      film.forEach(function (cinema) {
-        if (cinema.time && cinema.time.length) {
-          var key = redis_key_template(cinema);
-          var value = JSON.stringify(cinema.time); 
-          // console.log(key + ' ' + value);
-          commands.push(key);
-          commands.push(value);
-          data.push(cinema);
-        }
-      });
-    });
-  });
-
-  if (!commands.length) {
-    done();
+var process_city = function (task, done) {
+  var last_update = task.last_update;
+  if (last_update !== undefined && test.isBefore(last_update)) {
+    setImmediate(done);
     return;
   }
 
-  // client.mset(commands, done);
-  done();
-};
-
-var close_scraper = function (city, is_city, done_scraping) {
-  return function (errors, window) {
-    if (errors) {
-      console.log('errors occurred');
-      done_scraping(errors);
-      return;
-    }
-    var films = [];
-    var $ = window.$;
-    var type = is_city ? 'citta' : 'provincia';
-    $('.searchRes-group').each(function (i, resGroup) {
-      var film = [];
-      films.push(film);
-      // console.log(resGroup);
-      var $resGroup = $(resGroup);
-      var title = $resGroup.find('.filmName').text().toLowerCase();
-      // loop over cinemas
-      $resGroup.find('.resultLineFilm').each(function (j, resultLine) {
-        var $resultLine = $(resultLine);
-        film.push({
-          city: city,
-          type: type,
-          title: title,
-          cinema: $resultLine.find('.cineName').text().toLowerCase(),
-          time: $resultLine.find('.res-hours').text().split(' ')
-        });
-      });
-    });
-    done_scraping(null, films);
-  };
-}
-
-var compile_task = function (url, city_name, is_city) {
-  return function (done_task) {
-    jsdom.env({
-      url: url,
-      scripts: ["http://code.jquery.com/jquery.js"],
-      done: close_scraper(city_name, is_city, done_task)
-    });
-  };
-};
-
-async.eachLimit(cities, 12, function (city_obj, done) {
-  console.log('scraping films and cinemas for ' + city_obj.name + '...');
-  var url_provincia = template_url_provincia(city_obj);
-  var url_citta = template_url_citta(city_obj);
-  var is_city = true;
-
-  // async.series([
-  async.parallel([
-    compile_task(url_citta, city_obj.name, is_city),
-    compile_task(url_provincia, city_obj.name, !is_city)
-  ], function (err, result) {
+  db.cities.findOne({_id: task._id}, function (err, city) {
     if (err) {
-      done(err);
+      // here is the place to check if a maximum retry has been reached
+      q.push(city, decrement(done));
       return;
     }
 
-    to_redis(result, done);
+    scrape_city(city, scrape_city_callback(city, done));
   });
+};
 
-}, function (err) {
+// define queue
+
+var q = async.queue(process_city, CONCURRENCY);
+
+// process_cityes
+
+var process_cities = function (cities, done) {
+  counter = cities.length;
+
+  cities.forEach(function (city) {
+    q.push(city, decrement(done));
+  });
+};
+
+// retrieve cities
+
+var retrieve_cities = function (next) {
+  db.cities.find({/*sign: /^[abcdefghilm]/*/}, {last_update: 1}, next);
+};
+
+// Main
+
+async.waterfall([
+  retrieve_cities,
+  process_cities
+], function (err, result) {
   if (err) {
     console.log(err);
-    process.exit(1);
+    process.exit(-1);
   }
-  console.log(data.length + ' items');
-  fs.writeFileSync('cinema.txt', JSON.stringify(data), 'utf-8');
+
   console.log('DONE!');
   process.exit(0);
 });

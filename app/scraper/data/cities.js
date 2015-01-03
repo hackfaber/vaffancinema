@@ -1,27 +1,27 @@
 // 'use strict';
 
-module.exports = [
-  // { sign: "ag", name: "agrigento", dashed_name: "agrigento" },
-  // { sign: "al", name: "alessandria", dashed_name: "alessandria" },
-  // { sign: "an", name: "ancona", dashed_name: "ancona" },
-  // { sign: "ao", name: "aosta", dashed_name: "aosta" },
-  // { sign: "ar", name: "arezzo", dashed_name: "arezzo" },
-  // { sign: "ap", name: "ascoli piceno", dashed_name: "ascoli-piceno" },
-  // { sign: "at", name: "asti", dashed_name: "asti" },
-  // { sign: "av", name: "avellino", dashed_name: "avellino" },
-  // { sign: "ba", name: "bari", dashed_name: "bari" },
-  // { sign: "bt", name: "barletta-andria-trani", dashed_name: "barletta-andria-trani" },
-  // { sign: "bl", name: "belluno", dashed_name: "belluno" },
-  // { sign: "bn", name: "benevento", dashed_name: "benevento" },
-  // { sign: "bg", name: "bergamo", dashed_name: "bergamo" },
-  // { sign: "bi", name: "biella", dashed_name: "biella" },
-  // { sign: "bo", name: "bologna", dashed_name: "bologna" },
-  // { sign: "bz", name: "bolzano", dashed_name: "bolzano" },
-  // { sign: "bs", name: "brescia", dashed_name: "brescia" },
-  // { sign: "br", name: "brindisi", dashed_name: "brindisi" },
-  // { sign: "ca", name: "cagliari", dashed_name: "cagliari" },
-  // { sign: "cl", name: "caltanissetta", dashed_name: "caltanissetta" },
-  // { sign: "cb", name: "campobasso", dashed_name: "campobasso" },
+var cities = [
+  { sign: "ag", name: "agrigento", dashed_name: "agrigento" },
+  { sign: "al", name: "alessandria", dashed_name: "alessandria" },
+  { sign: "an", name: "ancona", dashed_name: "ancona" },
+  { sign: "ao", name: "aosta", dashed_name: "aosta" },
+  { sign: "ar", name: "arezzo", dashed_name: "arezzo" },
+  { sign: "ap", name: "ascoli piceno", dashed_name: "ascoli-piceno" },
+  { sign: "at", name: "asti", dashed_name: "asti" },
+  { sign: "av", name: "avellino", dashed_name: "avellino" },
+  { sign: "ba", name: "bari", dashed_name: "bari" },
+  { sign: "bt", name: "barletta-andria-trani", dashed_name: "barletta-andria-trani" },
+  { sign: "bl", name: "belluno", dashed_name: "belluno" },
+  { sign: "bn", name: "benevento", dashed_name: "benevento" },
+  { sign: "bg", name: "bergamo", dashed_name: "bergamo" },
+  { sign: "bi", name: "biella", dashed_name: "biella" },
+  { sign: "bo", name: "bologna", dashed_name: "bologna" },
+  { sign: "bz", name: "bolzano", dashed_name: "bolzano" },
+  { sign: "bs", name: "brescia", dashed_name: "brescia" },
+  { sign: "br", name: "brindisi", dashed_name: "brindisi" },
+  { sign: "ca", name: "cagliari", dashed_name: "cagliari" },
+  { sign: "cl", name: "caltanissetta", dashed_name: "caltanissetta" },
+  { sign: "cb", name: "campobasso", dashed_name: "campobasso" },
   { sign: "ci", name: "carbonia-iglesias", dashed_name: "carbonia-iglesias" },
   { sign: "ce", name: "caserta", dashed_name: "caserta" },
   { sign: "ct", name: "catania", dashed_name: "catania" },
@@ -112,3 +112,11 @@ module.exports = [
   { sign: "vi", name: "vicenza", dashed_name: "vicenza" },
   { sign: "vt", name: "viterbo", dashed_name: "viterbo" }
 ];
+
+var mongojs = require('mongojs');
+var ObjectId = mongojs.ObjectId;
+
+cities.forEach(function (city) {
+  city._id = new ObjectId();
+  console.log(city);
+});

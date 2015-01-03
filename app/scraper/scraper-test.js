@@ -14,15 +14,15 @@ var fs = require('fs');
 var html = fs.readFileSync(html_file, 'utf-8');
 var jquery = fs.readFileSync(jquery_file, 'utf-8');
 
-var redis = require("redis");
-var client = redis.createClient();
+// var redis = require("redis");
+// var client = redis.createClient();
 
 var fs = require('fs');
 var data = [];
 
-client.on("error", function (err) {
-  console.log("Error " + err);
-});
+// client.on("error", function (err) {
+//   console.log("Error " + err);
+// });
 
 var cities = [];
 var films = [];
@@ -117,7 +117,7 @@ var compile_task = function (url, city_name, is_city) {
   };
 };
 
-async.eachLimit(input_cities, 12, function (city_obj, done) {
+async.eachLimit(input_cities, 6, function (city_obj, done) {
   console.log('scraping films and cinemas for ' + city_obj.name + '...');
   var url_provincia = template_url_provincia(city_obj);
   var url_citta = template_url_citta(city_obj);

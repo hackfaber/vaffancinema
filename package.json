@@ -29,6 +29,8 @@
     "jshint-stylish": "*",
     "main-bower-files": "*",
     "minstache": "*",
+    "moment": "^2.8.4",
+    "mongojs": "^0.18.0",
     "morgan": "*",
     "nodemon": "*",
     "redis-scanstreams": "*",
