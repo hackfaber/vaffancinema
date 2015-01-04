@@ -16,6 +16,8 @@ var add_to_set = function (set, item) {
 };
 
 var map_films = function (pictures) {
+  if (pictures === undefined || pictures.length === 0) return;
+  
   return pictures.map(function (picture) {
     return {
       t: add_to_set(films, picture.title),

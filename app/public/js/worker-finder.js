@@ -1,15 +1,20 @@
 
-var itemsInBunch = 100;
+var itemsInBunch = 200;
 
 var items = [];
 var nBunches;
 
 var re;
-var working = false;
-var newQuery = false;
+// var working = false;
+// var newQuery = false;
 var bunches;
 
 var findABunch = function () {
+  // if (!(newQuery ^ working)) {
+  //   return;
+  // }
+  // newQuery = false;
+
   var i;
   var item;
   var bunch = [];
@@ -23,17 +28,24 @@ var findABunch = function () {
 
   // next iteration
   bunches += 1;
-  bunches < nBunches ? setTimeout(findABunch) : postMessage('done');
+  if (bunches < nBunches) {
+    // working = true;
+    setTimeout(findABunch, 30);
+  } else {
+    postMessage('done');
+    // working = false;
+  }
 };
 
 var find = function (string) {
-  // if (string.length < 3) {
-  //   return;
-  // }
+  if (string.length < 4) {
+    return;
+  }
   var query = string.toLowerCase();
   re = new RegExp(query.replace(/ /g, '.+'));
   bunches = 0;
-  setTimeout(findABunch);
+  // newQuery = true;
+  findABunch();
 };
 
 onmessage = function (e) {

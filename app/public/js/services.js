@@ -26,31 +26,54 @@ cinemaServices.factory('Cinemas', ['$http',
 
 
 /**
- * decoding tool
+ * decoding tools
  */
 
-function decode (data) {
-  var cinemas = data.cinemas;
-  var films = data.films;
-  var cities = data.cities;
-  var items = [];
+function compile_item (info) {
 
-  data.data.forEach(function (data_item) {
-    data_item.forEach(function (data_mapped_item) {
-        data_mapped_item.films.forEach(function (film_item) {
-          film_item.cinemas.forEach(function (cinema_item) {
-          var item = {
-            title: films[film_item.title],
-            cinema: cinemas[cinema_item.name],
-            schedule: cinema_item.time,
-            type: data_mapped_item.type,
-            city: cities[data_mapped_item.city]
-          };
-          item.slug = item.city + ' ' + item.type + ' ' + item.title + ' ' + item.cinema;
-          items.push(item);
-        });
+}
+
+function decode (json) {
+  var cinemas = json.cinemas;
+  var films = json.films;
+  var cities = json.cities;
+  var items = [];
+  var counter = 0;
+
+  json.data.forEach(function (city_item) {
+    city_item.c = city_item.c || [];
+    city_item.p = city_item.p || [];
+
+    city_item.c.forEach(function (film_item) {
+      film_item.c.forEach(function (cinema_item) {
+        var item = {
+          id: counter++,
+          title: films[film_item.t],
+          cinema: cinemas[cinema_item.n],
+          schedule: cinema_item.t,
+          type: 'città',
+          city: cities[city_item.n]
+        };
+        item.slug = item.city.toLowerCase() + ' citta città ' + item.title.toLowerCase() + ' ' + item.cinema.toLowerCase();
+        items.push(item);
+      });
+    });
+
+    city_item.p.forEach(function (film_item) {
+      film_item.c.forEach(function (cinema_item) {
+        var item = {
+          id: counter++,
+          title: films[film_item.t],
+          cinema: cinemas[cinema_item.n],
+          schedule: cinema_item.t,
+          type: 'provincia',
+          city: cities[city_item.n]
+        };
+        item.slug = item.city.toLowerCase() + ' ' + item.type.toLowerCase() + ' ' + item.title.toLowerCase() + ' ' + item.cinema.toLowerCase();
+        items.push(item);
       });
     });
   });
+  
   return items;
 }

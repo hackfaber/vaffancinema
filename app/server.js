@@ -5,6 +5,10 @@ var consolidate = require('consolidate');
 var compression = require('compression');
 var path = require('path');
 var update_json = require('./update-json.js');
+var spawn = require('child_process').spawn;
+var scraper_path = path.join(__dirname, 'scraper', 'scraper.js');
+var productionEnv = process.env;
+productionEnv.NODE_ENV = 'production';
 
 var server = module.exports.server = exports.server = express();
 
@@ -39,6 +43,26 @@ server.post('/update', function (req, res) {
   update(function () {
     res.end();
   });
+});
+
+server.post('/scrape', function (req, res) {
+  var scraper = spawn('node', ['scraper/scraper.js'], {env: productionEnv});
+  scraper.on('close', function (code) {
+    if (code !== 0) {
+      console.error('grep process exited with code ' + code);
+      return;
+    }
+
+    update(function (err) {
+      if (err) {
+        //handle error
+        return;
+      }
+
+    });
+  });
+  
+  res.end();
 });
 
 update(function (err) {

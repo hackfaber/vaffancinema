@@ -18,7 +18,7 @@
  */
 
 var DEBUG = process.env.NODE_ENV !== 'production';
-var CONCURRENCY = 4;
+var CONCURRENCY = 2;
 var mongojs = require('mongojs');
 var db = mongojs('vaffancinema', ['items', 'errors']);
 var scrape_city = require('./scrape-city.js');
