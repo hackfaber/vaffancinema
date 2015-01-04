@@ -20,7 +20,7 @@
 var DEBUG = process.env.NODE_ENV !== 'production';
 var CONCURRENCY = 4;
 var mongojs = require('mongojs');
-var db = mongojs('vaffancinema', ['cities', 'errors']);
+var db = mongojs('vaffancinema', ['items', 'errors']);
 var scrape_city = require('./scrape-city.js');
 var async = require('async');
 var moment = require('moment');
@@ -53,7 +53,7 @@ var scrape_city_callback = function (city, done) {
     }
 
     city.last_update = now.toDate();
-    db.cities.save(city, done); // saving correclty ended should be checked
+    db.items.save(city, done); // saving correclty ended should be checked
   };
 };
 
@@ -66,7 +66,7 @@ var process_city = function (task, done) {
     return;
   }
 
-  db.cities.findOne({_id: task._id}, function (err, city) {
+  db.items.findOne({_id: task._id}, function (err, city) {
     if (err) {
       // here is the place to check if a maximum retry has been reached
       q.push(city, decrement(done));
@@ -94,7 +94,7 @@ var process_cities = function (cities, done) {
 // retrieve cities
 
 var retrieve_cities = function (next) {
-  db.cities.find({/*sign: /^[abcdefghilm]/*/}, {last_update: 1}, next);
+  db.items.find({/*sign: /^[abcdefghilm]/*/}, {last_update: 1}, next);
 };
 
 // Main

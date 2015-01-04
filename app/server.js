@@ -1,11 +1,10 @@
 var express = require('express');
-var path = require('path');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var consolidate = require('consolidate');
 var compression = require('compression');
-
-var datapath = path.resolve(__dirname, './public/data.json');
+var path = require('path');
+var update_json = require('./update-json.js');
 
 var server = module.exports.server = exports.server = express();
 
@@ -16,37 +15,41 @@ server.use(compression({ threshold: 200 }));
 
 server.set('port', process.env.PORT || 3000);
 
+var json;
+
+var update = function (callback) {
+  update_json(function (err, data) {
+    if (err) {
+      // in caso di errore mantengo i vecchi cinema
+      setImmediate(callback, err);
+      return;
+    }
+
+    json = data;
+    setImmediate(callback, err, data);
+  });
+};
+
+
 server.get('/data', function (req, res) {
-  res.sendFile(datapath);
+  res.send(json);
 });
 
-server.get('/query', function (req, res) {
-  var search = req.param('search');
-  var pattern = '*' + search.replace(/ /g, '*') + '*';
-  
-  // to be used instead of client.keys
-  // client.scan({pattern: pattern}).pipe(res);
-  
-
-  if (search.length < 4) {
-    res.send({
-      keys: [],
-      values: []
-    });
-    return;
-  }
-  
-  client.keys(pattern, function (err, keys_replies) {
-    // handler err
-    client.mget(keys_replies, function (err, mget_replies) {
-      res.send({
-        keys: keys_replies,
-        values: mget_replies
-      });
-    });
+server.post('/update', function (req, res) {
+  update(function () {
+    res.end();
   });
 });
 
-server.listen(server.get('port'), function() {
-  console.log('Express server listening on port # ' + server.get('port'));
+update(function (err) {
+  if (err) {
+    console.error('Error occurred fetching data from DB...');
+    process.exit(-1);
+  }
+
+  server.listen(server.get('port'), function() {
+    console.log('Express server listening on port # ' + server.get('port'));
+  });
 });
+
+

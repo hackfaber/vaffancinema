@@ -25,7 +25,7 @@
           </div>
         </div>
         <ul class="results">
-          <li ng-repeat="item in items | hit" class="item">
+          <li ng-repeat="item in items track by item.slug" class="item">
             <div class="row">
               <span class="cinema nine columns">{{ item.cinema }}</span>
               <span class="location three columns">{{ item.city }} {{ item.type }}</span>

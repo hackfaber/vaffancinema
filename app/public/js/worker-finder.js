@@ -17,7 +17,7 @@ var findABunch = function () {
   var end = start + Math.min(itemsInBunch, items.length - start);
   for (i = start; i < end; i += 1) {
     item = items[i];
-    re.test(item.slug) && bunch.push(i);
+    re.test(item.slug) && bunch.push(item);
   }
   postMessage(bunch);
 
@@ -27,9 +27,9 @@ var findABunch = function () {
 };
 
 var find = function (string) {
-  if (string.length < 3) {
-    return;
-  }
+  // if (string.length < 3) {
+  //   return;
+  // }
   var query = string.toLowerCase();
   re = new RegExp(query.replace(/ /g, '.+'));
   bunches = 0;

@@ -21,8 +21,7 @@ var close_scraper = function (city, city_or_province, done_scraping) {
       return;
     }
 
-    city[city_or_province] = {};
-    var films = city[city_or_province].films = [];
+    var films = city['films_in_' + city_or_province] = [];
     var $ = window.$;
     $('.searchRes-group').each(function (i, resGroup) {
       var $resGroup = $(resGroup);

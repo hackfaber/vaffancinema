@@ -14,26 +14,25 @@ cinemaControllers.controller('cinemaSearchCtrl', ['$scope', 'Cinemas',
   function($scope, Cinemas) {
 
     $scope.items = [];
-    $scope.indexes = [];
 
     $scope.worker = new Worker('./js/worker-finder.js');
 
     $scope.worker.onmessage = function (e) {
       if (Object.prototype.toString.call(e.data) === '[object String]' && e.data === 'done') {
-        $scope.$apply(function () {});
+        // done seraching
         return;
       }
-      Array.prototype.push.apply($scope.indexes, e.data);
-      e.data.forEach(function (indx) {
-        $scope.items[indx].hit = true;
-      });
+
+      Array.prototype.push.apply($scope.items, e.data);
+      $scope.$apply(function () {});
     };
 
     $scope.on_change = function () {
-      $scope.indexes.forEach(function (indx) {
-        $scope.items[indx].hit = false;
-      });
-      $scope.indexes = [];
+      // $scope.items.forEach(function () {
+      //   $scope.items.pop();
+      // });
+      // $scope.$apply(function () {});
+      $scope.items = [];
       $scope.worker.postMessage(this.query);
       return;
     };
@@ -43,7 +42,6 @@ cinemaControllers.controller('cinemaSearchCtrl', ['$scope', 'Cinemas',
     };
 
     Cinemas(function (items) {
-      $scope.items = items;
       $scope.worker.postMessage(items);
     });
   }
