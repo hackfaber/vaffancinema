@@ -20,7 +20,9 @@
 var DEBUG = process.env.NODE_ENV !== 'production';
 var CONCURRENCY = 2;
 var mongojs = require('mongojs');
-var db = mongojs('vaffancinema', ['items', 'errors']);
+var mongourl = process.env.NODE_TARGET === 'remote' ? 'mongodb://localhost:4321/vaffancinema'
+ : 'vaffancinema';
+var db = mongojs(mongourl, ['items', 'errors']);
 var scrape_city = require('./scrape-city.js');
 var async = require('async');
 var moment = require('moment');
