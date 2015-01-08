@@ -21,20 +21,25 @@
       <div ng-controller="cinemaSearchCtrl">
         <div class="row search">
           <div class="twelve columns">
-            <input class="search" type="text" ng-model="query" ng-change="on_change()" id="ng-change-query" autofocus ng-enter="blur()"/>
+            <input class="search full-width" placeholder="cerca nell'ordine: [città] [titolo film] [nome cinema]" type="text" ng-model="query" ng-change="on_change()" id="ng-change-query" autofocus ng-enter="blur()"/>
           </div>
         </div>
         <ul class="results">
           <li ng-repeat="item in items track by item.id" class="item">
-            <div class="row">
-              <span class="cinema nine columns">{{ item.cinema }}</span>
-              <span class="location three columns">{{ item.city }} {{ item.type }}</span>
-            </div>
-            <div class="row">
-              <div class="twelve columns film">{{ item.title }}</div>
-            <div class="row"> 
-              <span class="time" ng-repeat="time in item.schedule" ng-class="{'last':$last}"> {{ time }} </span>
-            </div>
+            <section class="panel">
+              <header class="bg-red">
+                <span class="cinema col-sm-9">{{ item.cinema }}</span>
+                <span class="location col-sm-3">{{ item.city }} {{ item.type }}</span>
+              </header>
+              <main>
+                <div class="row title">
+                  <div class="col-12 film">{{ item.title }}</div>
+                <div class="row schedule"> 
+                  <span class="time" ng-repeat="time in item.schedule" ng-class="{'last':$last}"> {{ time }} </span>
+                </div>
+              </main>
+            </section>
+            
           </li>
         </ul>
       </div>
