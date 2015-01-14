@@ -1,0 +1,5 @@
+# open a ssh tunnel to remote mongo 
+ssh -L 4321:localhost:27017 -i ~/.ssh/id_rsa.pub federicospini.com
+
+# issue the command
+NODE_ENV=production; NODE_TARGET=remote node scraper.js
